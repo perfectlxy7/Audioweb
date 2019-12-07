@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd	
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<!-- <mvc:annotation-driven>
+		 消息转换器,解决responseBody返回中外乱码问题  
+        <mvc:message-converters register-defaults="true">  
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">  
+                <property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />  
+            </bean>  
+        </mvc:message-converters>  
+	</mvc:annotation-driven> -->
+	<mvc:annotation-driven>
+          <!-- 指定http返回编码格式，不然返回ajax请求json会出现中文乱码 -->
+          <mvc:message-converters>
+              <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                  <property name="supportedMediaTypes">
+                      <list>
+                         <value>text/plain;charset=UTF-8</value>
+                         <value>application/json;charset=UTF-8</value>
+                         <value>*/*;charset=UTF-8</value>
+                     </list>
+                 </property>
+             </bean>
+         </mvc:message-converters>
+     </mvc:annotation-driven>
+	<mvc:default-servlet-handler/>
+	
+	<!--使用  <context:component-scan/>元素，该元素的功能为:启动包扫描功能，以便注册带有@Controller、@Service、@repository、@Component等注解的类成为Spring的Bean-->
+	<context:component-scan base-package="com.audioweb.controller" />
+	<context:component-scan base-package="com.niocast.websocket" />
+	<context:component-scan base-package="com.json" />
+
+	<!-- 对静态资源文件的访问  restful-->     
+	<mvc:resources mapping="/admin/**" location="/,/admin/" />
+	<mvc:resources mapping="/static/**" location="/,/WEB-INF/static/" />
+	<mvc:resources mapping="/plugins/**" location="/,/plugins/" />
+	<mvc:resources mapping="/uploadFiles/**" location="/,/uploadFiles/" />
+
+	<!-- 访问拦截  -->  
+  	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="*.do"/>
+			<bean class="com.audioweb.interceptor.LoginHandlerInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	 
+	<!-- 配置SpringMVC的视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<bean id="exceptionResolver" class="com.audioweb.resolver.MyExceptionResolver"></bean>
+	<!-- 上传拦截，如最大上传值及最小上传值 -->
+	  <bean id="multipartResolver"   class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >   
+		  <property name="maxUploadSize">    
+	          <value>104857600</value>    
+	       </property>   
+	        <property name="maxInMemorySize">    
+	            <value>4096</value>    
+	        </property>   
+	         <property name="defaultEncoding">    
+	            <value>utf-8</value>    
+	        </property> 
+    </bean>  
+	
+</beans>

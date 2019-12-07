@@ -1,0 +1,40 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Audioweb:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Audioweb_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Audioweb" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="commons-io-2.4.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="jackson-all-1.7.6.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="jaudiotagger-2.2.6-SNAPSHOT.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="json-lib-2.4-jdk15.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="jstl-1.2.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="junit-4.5.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="log4j-1.2.17.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="mina-core-2.0.19.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="mybatis-3.2.1.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="mybatis-spring-1.2.0.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.34.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="netty-all-4.1.32.Final.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="poi-3.11-20141221.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="quartz-2.2.3.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="shiro-all-1.2.3.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="slf4j-api-1.7.9.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="spring-beans-4.0.4.RELEASE.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="spring-context-4.0.4.RELEASE.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="spring-context-support-4.0.4.RELEASE.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="spring-core-4.0.4.RELEASE.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="spring-web-4.0.4.RELEASE.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="spring-webmvc-4.0.4.RELEASE.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="spring-websocket-4.0.4.RELEASE.jar" module-name="Audioweb" />
+          <element id="library" level="module" name="standard-1.1.2.jar" module-name="Audioweb" />
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Audioweb/web/Web" />
+    </root>
+  </artifact>
+</component>
